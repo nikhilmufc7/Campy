@@ -14,6 +14,12 @@ var campgrounds = [
 	
 		{name : "Becka Smith", image : "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg"},
 		{name : "Joe Nash", image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"},
+		{name : "Louis Naster", image : "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg"},
+		{name : "Becka Smith", image : "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg"},
+		{name : "Joe Nash", image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"},
+		{name : "Louis Naster", image : "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg"},
+		{name : "Becka Smith", image : "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg"},
+		{name : "Joe Nash", image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"},
 		{name : "Louis Naster", image : "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg"}
 
 	];
