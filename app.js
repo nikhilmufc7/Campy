@@ -1,8 +1,29 @@
 var express = require("express");
 var app = express();
-
-
 var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
+
+var campgroundSchema = new mongoose.Schema({
+	name : String,
+	image: String
+});
+
+var Campground =  mongoose.model("campground",campgroundSchema);
+
+// Campground.create(
+// 	{
+// 		name : "Joe Nash", 
+// 		image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"
+// 	},function(err,campground){
+// 	if(err){
+// 		console.log(err);
+// 	}else{
+// 		console.log("New campground created");
+// 		console.log(campground);
+// 	}
+// });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -10,31 +31,30 @@ app.set("view engine", "ejs");
 app.get("/",function(req,res){
 	res.render("landing");
 });
-var campgrounds = [
-	
-		{name : "Becka Smith", image : "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg"},
-		{name : "Joe Nash", image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"},
-		{name : "Louis Naster", image : "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg"},
-		{name : "Becka Smith", image : "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg"},
-		{name : "Joe Nash", image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"},
-		{name : "Louis Naster", image : "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg"},
-		{name : "Becka Smith", image : "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg"},
-		{name : "Joe Nash", image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"},
-		{name : "Louis Naster", image : "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg"}
-
-	];
 
 app.get("/campgrounds",function(req,res){
 	
-	res.render("campground", {campgrounds: campgrounds});
+	Campground.find({},function(err,allcampgrounds){
+		if(err){
+			console.log(err);
+		}else{
+			res.render("campground", {campgrounds: allcampgrounds});
+		}
+	})
+	
 });
 
 app.post("/campgrounds",function(req,res){
 	var name = req.body.name;
 	var image = req.body.image;
 	var newCampground = {name: name, image: image}
-	campgrounds.push(newCampground);
-	res.redirect("/campgrounds");
+	Campground.create(newCampground,function(err,newlyCreated){
+		if (err) {
+			console.log(err);
+		}else{
+			res.redirect("/campgrounds");
+		}
+	});
 
 });
 
