@@ -7,7 +7,8 @@ mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
 
 var campgroundSchema = new mongoose.Schema({
 	name : String,
-	image: String
+	image: String,
+	description: String
 });
 
 var Campground =  mongoose.model("campground",campgroundSchema);
@@ -15,7 +16,8 @@ var Campground =  mongoose.model("campground",campgroundSchema);
 // Campground.create(
 // 	{
 // 		name : "Joe Nash", 
-// 		image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg"
+// 		image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg",
+// 		description: "This is a description for Joe Nash who is here for nothing"
 // 	},function(err,campground){
 // 	if(err){
 // 		console.log(err);
@@ -38,7 +40,7 @@ app.get("/campgrounds",function(req,res){
 		if(err){
 			console.log(err);
 		}else{
-			res.render("campground", {campgrounds: allcampgrounds});
+			res.render("index", {campgrounds: allcampgrounds});
 		}
 	})
 	
@@ -47,7 +49,8 @@ app.get("/campgrounds",function(req,res){
 app.post("/campgrounds",function(req,res){
 	var name = req.body.name;
 	var image = req.body.image;
-	var newCampground = {name: name, image: image}
+	var desc = req.body.description;
+	var newCampground = {name: name, image: image,description:desc};
 	Campground.create(newCampground,function(err,newlyCreated){
 		if (err) {
 			console.log(err);
@@ -60,6 +63,20 @@ app.post("/campgrounds",function(req,res){
 
 app.get("/campgrounds/new",function(req,res){
 	res.render("new.ejs");
+});
+
+app.get("/campgrounds/:id",function(req,res){
+
+	Campground.findById(req.params.id,function(err, foundCampground){
+		if(err){
+			console.log(err)
+		}else{
+			res.render("show",{campground: foundCampground});
+			
+		}
+	}); 
+
+
 });
 
 
