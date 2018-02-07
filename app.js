@@ -2,20 +2,15 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var Campground = require("./models/campground");
 
 mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
 
-var campgroundSchema = new mongoose.Schema({
-	name : String,
-	image: String,
-	description: String
-});
 
-var Campground =  mongoose.model("campground",campgroundSchema);
 
 // Campground.create(
 // 	{
-// 		name : "Joe Nash", 
+// 		name : "Joe Nash",
 // 		image: "https://farm4.staticflickr.com/3273/2602356334_20fbb23543.jpg",
 // 		description: "This is a description for Joe Nash who is here for nothing"
 // 	},function(err,campground){
@@ -35,7 +30,7 @@ app.get("/",function(req,res){
 });
 
 app.get("/campgrounds",function(req,res){
-	
+
 	Campground.find({},function(err,allcampgrounds){
 		if(err){
 			console.log(err);
@@ -43,7 +38,7 @@ app.get("/campgrounds",function(req,res){
 			res.render("index", {campgrounds: allcampgrounds});
 		}
 	})
-	
+
 });
 
 app.post("/campgrounds",function(req,res){
@@ -72,9 +67,9 @@ app.get("/campgrounds/:id",function(req,res){
 			console.log(err)
 		}else{
 			res.render("show",{campground: foundCampground});
-			
+
 		}
-	}); 
+	});
 
 
 });
