@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <p class="lead">Yelp Camp</p>
+        <div class="list-group">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1>
+    <%=campground.name%>
+  </h1>
+
+  <img src="<%= campground.image %>">
+
+  <p>
+    <%= campground.description %>
+  </p>
+
+  <p>
+    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+  </p>
+
+  <% campground.comments.forEach(function(comment){ %>
+    <p>
+      <strong>
+        <%= comment.author %>
+      </strong> -
+      <%= comment.text %>
+    </p>
+    <% }) %>
+      <% include ../partials/footer %>
