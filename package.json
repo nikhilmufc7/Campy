@@ -13,6 +13,7 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
     "mongoose": "^4.13.7",
     "nodemon": "^1.17.1",
     "passport": "^0.4.0",
