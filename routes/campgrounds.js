@@ -66,8 +66,10 @@ router.get("/:id/edit",function(req,res){
             res.render("campgrounds/edit",{campground: foundCampground});
         }
 
-    })
-};
+    });
+    }else{
+        console.log("")
+    }
 });
 
 // update
