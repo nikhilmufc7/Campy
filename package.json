@@ -4,12 +4,14 @@
   "description": "YelpCamp v1",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Colt Steele",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.1",
+    "connect-flash": "^0.1.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
