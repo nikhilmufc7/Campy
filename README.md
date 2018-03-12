@@ -24,12 +24,12 @@ mongod
 ```
 
 ```
-Back to our the original tab
+Back to our original tab
 
 npm start or node app.js
 ```
 
-### Technologies and Packages used used
+### Technologies and Packages used
 * Node 
 * MongoDB
 * Express
