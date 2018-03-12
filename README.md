@@ -29,6 +29,12 @@ Back to our original tab
 npm start or node app.js
 ```
 
+```
+open localhost:3000 in your browser
+```
+
+
+
 ### Technologies and Packages used
 * Node 
 * MongoDB
