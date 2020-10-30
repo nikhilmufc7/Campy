@@ -1,13 +1,13 @@
 {
-  "name": "v1",
-  "version": "1.0.0",
+  "name": "v2",
+  "version": "2.0.0",
   "description": "YelpCamp v1",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "author": "Colt Steele",
+  "author": "Nikhil Singh",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.1",
